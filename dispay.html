@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Login Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%;
+            max-width: 370px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0px;
+        }
+        .header h1 {
+            color: #1368d6;
+            font-size: 50px;
+            font-weight: bold;
+        }
+        .right {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        .saved-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .saved-info p {
+            font-weight: bold;
+        }
+        .delete-button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .delete-button:hover {
+            background-color: #ff1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Login Information</h1>
+        </div>
+        <div class="right">
+            <div class="saved-info">
+                <p>Saved Login Information:</p>
+                <ul id="saved-users"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to display users
+        function displayUsers() {
+            // Get the saved users from localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const savedUsersElement = document.getElementById('saved-users');
+
+            // Clear the current list
+            savedUsersElement.innerHTML = '';
+
+            // Display each user
+            users.forEach((user, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `User  ${index + 1}: Email - ${user.email}, Password - ${user.password}`;
+
+                // Create delete button
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = 'delete-button';
+                deleteButton.onclick = () => {
+                    // Delete user
+                    users.splice(index, 1); // Remove the user from the array
+                    localStorage.setItem('users', JSON.stringify(users)); // Update localStorage
+                    displayUsers(); // Refresh the displayed list
+                };
+
+                listItem.appendChild(deleteButton);
+                savedUsersElement.appendChild(listItem);
+            });
+        }
+
+        // Initial display of users
+        displayUsers();
+    </script>
+</body>
+</html>
