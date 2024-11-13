@@ -56,6 +56,13 @@
         .delete-button:hover {
             background-color: #ff1a1a;
         }
+        .user-link {
+            color: #1368d6;
+            cursor: pointer;
+            text-decoration: underline;
+            display: inline-block;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -74,35 +81,39 @@
     <script>
         // Function to display users
         function displayUsers() {
-            // Get the saved users from localStorage
             const users = JSON.parse(localStorage.getItem('users')) || [];
             const savedUsersElement = document.getElementById('saved-users');
 
-            // Clear the current list
             savedUsersElement.innerHTML = '';
 
-            // Display each user
             users.forEach((user, index) => {
                 const listItem = document.createElement('li');
-                listItem.textContent = `User  ${index + 1}: Email - ${user.email}, Password - ${user.password}`;
+
+                // Create user link
+                const userLink = document.createElement('span');
+                userLink.textContent = `User ${index + 1}: ${user.email}`;
+                userLink.className = 'user-link';
+                userLink.onclick = () => {
+                    localStorage.setItem('selectedUser', JSON.stringify(user));
+                    window.location.href = 'main_display.html'; // Navigate to the main display page
+                };
 
                 // Create delete button
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Delete';
                 deleteButton.className = 'delete-button';
                 deleteButton.onclick = () => {
-                    // Delete user
-                    users.splice(index, 1); // Remove the user from the array
-                    localStorage.setItem('users', JSON.stringify(users)); // Update localStorage
-                    displayUsers(); // Refresh the displayed list
+                    users.splice(index, 1);
+                    localStorage.setItem('users', JSON.stringify(users));
+                    displayUsers();
                 };
 
+                listItem.appendChild(userLink);
                 listItem.appendChild(deleteButton);
                 savedUsersElement.appendChild(listItem);
             });
         }
 
-        // Initial display of users
         displayUsers();
     </script>
 </body>

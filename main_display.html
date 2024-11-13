@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All User Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 370px;
+        }
+        h1 {
+            color: #1368d6;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        .user-info {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .back-button {
+            background-color: #1368d6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #0f56a5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>All Users</h1>
+        <div id="all-users"></div>
+        <button class="back-button" onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        // Function to display all users
+        function displayAllUsers() {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const allUsersElement = document.getElementById('all-users');
+
+            if (users.length === 0) {
+                allUsersElement.textContent = 'No saved users.';
+            } else {
+                users.forEach((user, index) => {
+                    const userDiv = document.createElement('div');
+                    userDiv.className = 'user-info';
+                    userDiv.textContent = `User ${index + 1}: Email - ${user.email}, Password - ${user.password}`;
+                    allUsersElement.appendChild(userDiv);
+                });
+            }
+        }
+
+        // Function to go back to the previous page
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        // Display all users on load
+        displayAllUsers();
+    </script>
+</body>
+</html>
